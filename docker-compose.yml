@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  shoppingcart-api:
+    build: shoppingcart-api/.
+    ports:
+      - "8080:8080"
+    depends_on:
+      - shoppingcart-mongo
+  shoppingcart-web:
+    build: shoppingcart-web/.
+    ports:
+      - "80:80"
+    depends_on:
+      - shoppingcart-api
+  shoppingcart-mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./MongoDB:/data/db

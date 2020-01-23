@@ -1,0 +1,13 @@
+<form>
+  <div class="form-group">
+    <label for="name">Product Name</label>
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" [(ngModel)]="product.name" name="name"
+      required>
+  </div>
+  <div class="form-group">
+    <label for="email">Sale Value ($)</label>
+    <input currencyMask class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="product.value"
+      name="value" [options]="{align: 'left'}" required>
+  </div>
+  <button (click)="save()" type="submit" class="btn btn-primary">Save</button>
+</form>

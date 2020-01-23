@@ -1,0 +1,45 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="../../../assets/images/commerce-and-shopping.png" width="30" height="30" class="d-inline-block align-top"
+      alt="Icon made by Pixel perfect from www.flaticon.com">
+    Shopping Cart
+  </a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/app/items']">Home</a>
+      </li>
+      <li class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">Product Management</a>
+        <div class="dropdown-menu">
+          <a [routerLink]="['/app/products']" routerLinkActive="router-link-active" class="dropdown-item" href="#">All
+            Products</a>
+          <a [routerLink]="['/app/products/form']" routerLinkActive="router-link-active" class="dropdown-item"
+            href="#">New
+            product</a>
+        </div>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:false}">
+        <a class="nav-link" [routerLink]="['/app/cart']">Cart <span class="badge badge-secondary">{{itensOnCart}}</span>
+        </a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fas fa-user"></i> {{usernameLogged}}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" [routerLink]="['/app/user']" routerLinkActive="router-link-active"
+            type="button"><i class="fas fa-user-edit"></i> Profile</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button" (click)="logout()"><i class="fas fa-sign-out-alt"></i>
+            Logout</button>
+        </div>
+      </div>
+    </span>
+
+  </div>
+</nav>

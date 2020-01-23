@@ -1,0 +1,27 @@
+application:
+  security:
+    jwt:
+      secretkey: BOBAFETT
+      validity: 3600000000
+---
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      authentication-database: admin
+      username: root
+      password: root
+      database: test_db
+      port: 27017
+      host: localhost
+---
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      authentication-database: admin
+      username: root
+      password: root
+      database: test_db
+      port: 27017
+      host: shoppingcart-mongo

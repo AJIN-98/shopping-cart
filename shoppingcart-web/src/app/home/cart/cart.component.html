@@ -1,0 +1,43 @@
+<table class="table table-striped" *ngIf="currentCart">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col" class="text-center">Unit value</th>
+      <th scope="col" class="text-center">Amount</th>
+      <th scope="col" class="text-center">Total Value</th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let productCart of (currentCart.cartProducts || []); let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{productCart.product.name}}</td>
+      <td class="text-center">{{productCart.product.value | currency}}</td>
+      <td class="text-center">{{productCart.amount}}</td>
+      <td class="text-center">{{productCart.product.value * productCart.amount | currency}}</td>
+      <td class="text-center">
+        <div class="btn-group" role="group" aria-label="Actions on Cart">
+          <button (click)="decrease(productCart.product)" type="button" class="btn btn-outline-warning"><i
+              class="fas fa-minus"></i></button>
+          <button (click)="increase(productCart.product)" type="button" class="btn btn-outline-primary"><i
+              class="fas fa-plus"></i></button>
+          <button (click)="remove(productCart.product)" type="button" class="btn btn-outline-danger"><i
+              class="fas fa-trash"></i></button>
+        </div>
+      </td>
+    </tr>
+    <tr class="bg-dark text-light">
+      <td colspan="5" class="text-right">
+        <h5>Total</h5>
+      </td>
+      <td colspan="1" class="text-center">
+        <h5>{{getTotalValue | currency}}</h5>
+      </td>
+    </tr>
+    <tr class="bg-white">
+      <td colspan="4"></td>
+      <td colspan="2"><button class="btn btn-block btn-outline-primary" (click)="finish()">Finish</button></td>
+    </tr>
+  </tbody>
+</table>
