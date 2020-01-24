@@ -10,7 +10,7 @@ import {Cart} from 'src/app/model/cart'
 })
 export class HeaderComponent implements OnInit {
 
-  private usernameLogged: string = ''
+  usernameLogged: string = ''
 
   constructor(private authService: AuthenticationService,
               private cartService: CartService) {

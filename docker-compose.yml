@@ -4,13 +4,13 @@ services:
   shoppingcart-api:
     build: shoppingcart-api/.
     ports:
-      - "8080:8080"
+      - "8900:8080"
     depends_on:
       - shoppingcart-mongo
   shoppingcart-web:
     build: shoppingcart-web/.
     ports:
-      - "80:80"
+      - "82:80"
     depends_on:
       - shoppingcart-api
   shoppingcart-mongo:
