@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core'
-import { ToastrService as NgxToastr } from 'ngx-toastr'
-
+import {Injectable} from '@angular/core'
+import {ToastrService as NgxToastr} from 'ngx-toastr'
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,11 @@ export class ToastrService {
   configuration = {
     positionClass: 'toast-bottom-full-width',
     progressBar: true,
-    timeOut: 7000,
+    timeOut: 2000,
+    extendedTimeOut: 500,
     onActivateTick: true,
     enableHtml: false,
-    maxOpened: 4,
-    autoDismiss: true
+    easing: 'ease-in-out'
   }
 
   error(errorMessage: string, errorTitle: string = 'Ops!') {

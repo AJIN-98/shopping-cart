@@ -9,7 +9,7 @@
                 <div class="input-group-text"><i class="fas fa-search"></i></div>
               </div>
               <input type="text" class="form-control" id="productSearch" placeholder="Product name"
-                [(ngModel)]="searchText" name="searchText">
+                     [(ngModel)]="searchText" name="searchText">
             </div>
           </div>
         </div>
@@ -25,7 +25,8 @@
             <h5 class="card-title">{{item.name}}</h5>
             <p class="card-text">{{item.value | currency}}</p>
             <button (click)="addToCart(item)" class="btn btn-success btn-block"><i class="fas fa-cart-plus"></i> Add to
-              cart</button>
+              cart
+            </button>
           </div>
         </div>
       </div>

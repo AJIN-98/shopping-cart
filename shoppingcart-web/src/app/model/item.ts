@@ -1,12 +1,10 @@
 export class Item {
 
-    constructor () {
-        this.id = ''
-        this.name = ''
-        this.value = 0.00
-    }
+  public constructor(init?: Partial<Item>) {
+    Object.assign(this, init)
+  }
 
-    public id: string
-    public name: string
-    public value: number
+  public id: string = ''
+  public name: string = ''
+  public value: number = 0.00
 }

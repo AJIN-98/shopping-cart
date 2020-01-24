@@ -11,12 +11,14 @@ import java.util.List;
 
 public interface IService<T extends ADomain> {
 
-    public T save(T object);
+    T save(T object);
 
-    public void delete(String id);
+    void delete(String id);
 
-    public List<T> listAll();
+    void delete(T object);
 
-    public T findById(String id);
+    List<T> listAll();
+
+    T findById(String id);
 
 }

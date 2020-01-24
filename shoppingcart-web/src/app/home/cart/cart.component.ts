@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
-import { Cart } from 'src/app/model/cart';
-import { Router } from '@angular/router';
-import { Item } from 'src/app/model/item';
+import {Component, OnInit} from '@angular/core'
+import {CartService} from 'src/app/services/cart.service'
+import {Cart} from 'src/app/model/cart'
+import {Router} from '@angular/router'
+import {Item} from 'src/app/model/item'
 
 @Component({
   selector: 'app-cart',
@@ -13,10 +13,14 @@ export class CartComponent implements OnInit {
 
   currentCart: Cart
 
-  constructor(private service: CartService, private router: Router) { }
+  constructor(private service: CartService,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.service.getCurrentCart().subscribe(cart => { this.currentCart = cart })
+    this.service.getCurrentCart().subscribe(cart => {
+      this.currentCart = cart
+    })
   }
 
   get getTotalValue() {
@@ -26,7 +30,7 @@ export class CartComponent implements OnInit {
   }
 
   updateCurrentCart() {
-    this.service.getCurrentCart().subscribe(cart => { this.currentCart = cart })
+    this.currentCart = JSON.parse(localStorage.getItem('currentCart'))
   }
 
   async increase(item: Item) {
@@ -41,7 +45,7 @@ export class CartComponent implements OnInit {
 
   async remove(item: Item) {
     await this.service.removeProductOnCurrentCart(item)
-    this.updateCurrentCart
+    this.updateCurrentCart()
   }
 
   finish() {

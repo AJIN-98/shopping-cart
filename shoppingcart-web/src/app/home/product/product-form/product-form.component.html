@@ -1,13 +1,20 @@
-<form>
+<form class="needs-validation" novalidate [formGroup]="productForm" (ngSubmit)="save()">
   <div class="form-group">
     <label for="name">Product Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" [(ngModel)]="product.name" name="name"
-      required>
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" formControlName="name"
+           [ngClass]="{ 'is-invalid': submitted && controls.name.errors }">
+    <div *ngIf="submitted && controls.name.errors" class="invalid-feedback">
+      <div *ngIf="controls.name.errors.required">Name is required</div>
+    </div>
   </div>
   <div class="form-group">
     <label for="email">Sale Value ($)</label>
-    <input currencyMask class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="product.value"
-      name="value" [options]="{align: 'left'}" required>
+    <input currencyMask class="form-control" id="email" aria-describedby="emailHelp" formControlName="value"
+           [options]="{align: 'left'}" [ngClass]="{ 'is-invalid': submitted && controls.value.errors }">
+    <div *ngIf="submitted && controls.value.errors" class="invalid-feedback">
+      <div *ngIf="controls.value.errors.required">Values is required</div>
+      <div *ngIf="controls.value.errors.min">Value must be greater than 0.00</div>
+    </div>
   </div>
-  <button (click)="save()" type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 </form>

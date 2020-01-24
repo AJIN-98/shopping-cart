@@ -1,7 +1,7 @@
-import { Item } from './item';
+import {Item} from './item'
 
 export class CartProduct {
-    public id: string
-    public product: Item
-    public amount: number
+  public id: string
+  public product: Item
+  public amount: number
 }

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs'
-import { Item } from '../model/item'
-import { environment } from 'src/environments/environment'
+import {Injectable} from '@angular/core'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import {Observable} from 'rxjs'
+import {Item} from '../model/item'
+import {environment} from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,9 @@ export class ItemService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  };
+  }
 
-  constructor(private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   API_URL = environment.apiUrl.concat('products')
 

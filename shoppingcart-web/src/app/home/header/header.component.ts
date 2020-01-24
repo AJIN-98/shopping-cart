@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { CartService } from 'src/app/services/cart.service';
-import { Cart } from 'src/app/model/cart';
+import {Component, OnInit} from '@angular/core'
+import {AuthenticationService} from 'src/app/services/authentication.service'
+import {CartService} from 'src/app/services/cart.service'
+import {Cart} from 'src/app/model/cart'
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,9 @@ import { Cart } from 'src/app/model/cart';
 export class HeaderComponent implements OnInit {
 
   private usernameLogged: string = ''
-  constructor(private authService: AuthenticationService, private cartService: CartService) {
+
+  constructor(private authService: AuthenticationService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {

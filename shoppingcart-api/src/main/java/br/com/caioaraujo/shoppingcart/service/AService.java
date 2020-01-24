@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.List;
 
 /**
- *
  * @author Caio Araujo
  */
 
@@ -32,6 +31,11 @@ public class AService<T extends ADomain> implements IService<T> {
     }
 
     @Override
+    public void delete(T object) {
+        this.repository.delete(object);
+    }
+
+    @Override
     public List<T> listAll() {
         return this.repository.findAll();
     }
@@ -41,7 +45,7 @@ public class AService<T extends ADomain> implements IService<T> {
         return this.repository.findById(id).orElseThrow(NotFoundException::new);
     }
 
-    public User getLoggedUser(){
+    public User getLoggedUser() {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
-import { ItemService } from 'src/app/services/item.service'
-import { ActivatedRoute, Router } from '@angular/router'
-import { Item } from 'src/app/model/item'
-import { ToastrService } from 'src/app/services/toastr.service'
-import { CartService } from 'src/app/services/cart.service'
+import {Component, OnInit} from '@angular/core'
+import {ItemService} from 'src/app/services/item.service'
+import {ActivatedRoute, Router} from '@angular/router'
+import {Item} from 'src/app/model/item'
+import {ToastrService} from 'src/app/services/toastr.service'
+import {CartService} from 'src/app/services/cart.service'
 
 @Component({
   selector: 'app-items',
@@ -12,11 +12,14 @@ import { CartService } from 'src/app/services/cart.service'
 })
 export class ItemsComponent implements OnInit {
 
+  searchText: string = ''
+
   constructor(private service: ItemService,
-    private toastr: ToastrService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private cartService: CartService) { }
+              private toastr: ToastrService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private cartService: CartService) {
+  }
 
   items: Item[] = []
 

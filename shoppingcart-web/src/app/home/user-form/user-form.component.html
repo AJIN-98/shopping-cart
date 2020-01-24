@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" formControlName="name"
-      [ngClass]="{ 'is-invalid': submitted && userFormControls.name.errors }">
+           [ngClass]="{ 'is-invalid': submitted && userFormControls.name.errors }">
     <div *ngIf="submitted && userFormControls.name.errors" class="invalid-feedback">
       <div *ngIf="userFormControls.name.errors.required">Name is required</div>
     </div>
@@ -14,7 +14,7 @@
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" formControlName="password"
-      [ngClass]="{ 'is-invalid': submitted && userFormControls.password.errors }">
+           [ngClass]="{ 'is-invalid': submitted && userFormControls.password.errors }">
     <div *ngIf="submitted && userFormControls.password.errors" class="invalid-feedback">
       <div *ngIf="userFormControls.password.errors.required">Password is required</div>
     </div>

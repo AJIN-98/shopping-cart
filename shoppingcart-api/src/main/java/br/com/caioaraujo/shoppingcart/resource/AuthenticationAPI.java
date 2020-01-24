@@ -50,7 +50,7 @@ public class AuthenticationAPI {
                             authenticationRequest.getUsername(),
                             authenticationRequest.getPassword()));
             String token = jwtProvider.createToken(authenticationRequest.getUsername(), Arrays.asList("USER"));
-            Optional<User> user = userService.findByUsername(authenticationRequest.getUsername());
+            Optional<User> user = userService.findByEmail(authenticationRequest.getUsername());
             return ResponseEntity.ok(new AuthenticationResponse(token, user.get()));
         } catch (AuthenticationException e) {
             e.printStackTrace();

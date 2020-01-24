@@ -36,7 +36,7 @@ public class UserService extends AService<User> {
         return super.save(object);
     }
 
-    public Optional<User> findByUsername(String username) {
+    public Optional<User> findByEmail(String username) {
         return this.repository.findByEmail(username);
     }
 

@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform, Injectable } from '@angular/core'
-import { Item } from '../model/item'
+import {Pipe, PipeTransform} from '@angular/core'
+import {Item} from '../model/item'
 
 @Pipe({
   name: 'search'
@@ -7,9 +7,13 @@ import { Item } from '../model/item'
 export class SearchPipe implements PipeTransform {
 
   transform(items: Item[], searchText: string): any[] {
-    if (!items) return [];
-    if (!searchText) return items;
-    searchText = searchText.toLowerCase();
+    if (!items) {
+      return []
+    }
+    if (!searchText) {
+      return items
+    }
+    searchText = searchText.toLowerCase()
     return items.filter(it => {
       return it.name.toLowerCase().includes(searchText);
     });

@@ -8,7 +8,7 @@
     <span class="navbar-text">
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-          [(ngModel)]="searchText" name="searchText">
+               [(ngModel)]="searchText" name="searchText">
       </form>
     </span>
   </div>
@@ -16,26 +16,26 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Value</th>
-      <th scope="col" class="text-right">Edit or Delete</th>
-    </tr>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Product Name</th>
+    <th scope="col">Value</th>
+    <th scope="col" class="text-right">Edit or Delete</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of products | search: searchText ; let i = index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{item.name}}</td>
-      <td>{{item.value | currency}}</td>
-      <td class="text-right">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button (click)="toEdition(item)" type="button" class="btn btn-outline-secondary"><i
-              class="fas fa-edit"></i></button>
-          <button (click)="removeItem(item)" type="button" class="btn btn-outline-danger"><i
-              class="fas fa-trash"></i></button>
-        </div>
-      </td>
-    </tr>
+  <tr *ngFor="let item of products | search: searchText ; let i = index">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{item.name}}</td>
+    <td>{{item.value | currency}}</td>
+    <td class="text-right">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button (click)="toEdition(item)" type="button" class="btn btn-outline-secondary"><i
+          class="fas fa-edit"></i></button>
+        <button (click)="removeItem(item)" type="button" class="btn btn-outline-danger"><i
+          class="fas fa-trash"></i></button>
+      </div>
+    </td>
+  </tr>
   </tbody>
 </table>

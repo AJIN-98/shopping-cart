@@ -23,6 +23,6 @@ public class ShoppingCartUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.userService.findByUsername(username).orElseThrow(UserNotFoundException::new);
+        return this.userService.findByEmail(username).orElseThrow(UserNotFoundException::new);
     }
 }

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { AuthenticationService } from '../services/authentication.service';
-import { User } from '../model/user';
-import { AuthRequest } from '../model/auth.request';
-import { Router } from '@angular/router';
-import { ToastrService } from '../services/toastr.service';
+import {Component, OnInit} from '@angular/core'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {UserService} from '../services/user.service'
+import {AuthenticationService} from '../services/authentication.service'
+import {User} from '../model/user'
+import {AuthRequest} from '../model/auth.request'
+import {Router} from '@angular/router'
+import {ToastrService} from '../services/toastr.service'
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private authService: AuthenticationService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) {
+  }
 
 
   ngOnInit() {
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.loginSubmitted = true
 
     if (this.userLoginForm.invalid) {
-      return;
+      return
     }
     this.authenticate(this.userLogin.username, this.userLogin.password)
   }
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.loginSubmitted = false
     this.registerSubmitted = true
     if (this.userRegisterForm.invalid) {
-      return;
+      return
     }
 
     this.userService.saveUser(this.userRegistration).subscribe((user) => {
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
   }
 
   get loginControls() {
-    return this.userLoginForm.controls;
+    return this.userLoginForm.controls
   }
 
   get registerControls() {

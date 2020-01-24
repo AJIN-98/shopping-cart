@@ -47,7 +47,7 @@ public class JwtProvider {
     }
 
     public Authentication getAuthentication(String token) throws LoginException {
-        User user = this.userService.findByUsername(getUsername(token)).orElseThrow(LoginException::new);
+        User user = this.userService.findByEmail(getUsername(token)).orElseThrow(LoginException::new);
         return new UsernamePasswordAuthenticationToken(user, "", user.getAuthorities());
     }
 

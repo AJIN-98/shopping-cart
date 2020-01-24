@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemService } from 'src/app/services/item.service';
-import { Item } from 'src/app/model/item';
-import { ToastrService } from 'src/app/services/toastr.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SearchPipe } from 'src/app/pipe/search.pipe';
+import {Component, OnInit} from '@angular/core'
+import {ItemService} from 'src/app/services/item.service'
+import {Item} from 'src/app/model/item'
+import {ToastrService} from 'src/app/services/toastr.service'
+import {ActivatedRoute, Router} from '@angular/router'
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +11,13 @@ import { SearchPipe } from 'src/app/pipe/search.pipe';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private service: ItemService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute) { }
+  searchText: string = ''
+
+  constructor(private service: ItemService,
+              private toastr: ToastrService,
+              private router: Router,
+              private route: ActivatedRoute) {
+  }
 
   products: Item[] = []
 
@@ -34,7 +39,7 @@ export class ProductListComponent implements OnInit {
   }
 
   toEdition(item) {
-    this.router.navigate([`/products/form/${item.id}`], { relativeTo: this.route })
+    this.router.navigate([`/app/products/form/${item.id}`], {relativeTo: this.route})
   }
 
 }

@@ -1,11 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Cart } from '../model/cart';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { CartProduct } from '../model/cart-product';
-import { ToastrService } from './toastr.service';
-import { Item } from '../model/item';
+import {Injectable, OnInit} from '@angular/core'
+import {Cart} from '../model/cart'
+import {HttpClient} from '@angular/common/http'
+import {environment} from 'src/environments/environment'
+import {Observable} from 'rxjs'
+import {ToastrService} from './toastr.service'
+import {Item} from '../model/item'
 
 @Injectable({
   providedIn: 'root'
@@ -33,28 +32,40 @@ export class CartService implements OnInit {
 
   updateCurrentCart() {
     this.getCurrentCart().subscribe(cart => {
-      this.getCurrentCart().subscribe(cart => { localStorage.setItem('currentCart', JSON.stringify(cart)) })
+      this.getCurrentCart().subscribe(cart => {
+        localStorage.setItem('currentCart', JSON.stringify(cart))
+      })
     })
   }
 
-  async putProductOnCurrentCart(item: Item) {
-    this.http.get(this.API_URL.concat(`/put-product/${item.id}`)).subscribe((cart) => {
-      localStorage.setItem('currentCart', JSON.stringify(cart));
-      this.toastr.success(`Product ${item.name} was added!`);
+  putProductOnCurrentCart(item: Item) {
+    return new Promise((resolve) => {
+      this.http.get(this.API_URL.concat(`/put-product/${item.id}`)).subscribe((cart) => {
+        localStorage.setItem('currentCart', JSON.stringify(cart))
+        this.toastr.success(`Product ${item.name} was added!`)
+        resolve()
+      })
     })
   }
 
-  async decreaseProductOnCurrentCart(item: Item) {
-    this.http.get(this.API_URL.concat(`/decrease-product/${item.id}`)).subscribe((cart) => {
-      localStorage.setItem('currentCart', JSON.stringify(cart));
-      this.toastr.success(`Product ${item.name} was decreased!`);
+  decreaseProductOnCurrentCart(item: Item) {
+    return new Promise((resolve) => {
+      this.http.get(this.API_URL.concat(`/decrease-product/${item.id}`)).subscribe((cart) => {
+        localStorage.setItem('currentCart', JSON.stringify(cart))
+        this.toastr.success(`Product ${item.name} was decreased!`)
+        resolve()
+      })
     })
+
   }
 
-  async removeProductOnCurrentCart(item: Item) {
-    this.http.get(this.API_URL.concat(`/remove-product/${item.id}`)).subscribe((cart) => {
-      localStorage.setItem('currentCart', JSON.stringify(cart));
-      this.toastr.success(`Product ${item.name} was removed!`);
+  removeProductOnCurrentCart(item: Item) {
+    return new Promise((resolve) => {
+      this.http.get<Cart>(this.API_URL.concat(`/remove-product/${item.id}`)).subscribe((cart) => {
+        localStorage.setItem('currentCart', JSON.stringify(cart))
+        this.toastr.success(`Product ${item.name} was removed!`)
+        resolve()
+      })
     })
   }
 
