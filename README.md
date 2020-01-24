@@ -7,9 +7,12 @@ Execute this command on main root:
 
 ``mvn package``
 
-## Run with Docker
-To run with docker execute this command on root:
+Will be execute the scripts to do build the shoppingcart-api and shopping-cart-web.
+
+## Running on Docker
+
+To run on docker execute this command on main root after project build:
 
 ``docker-compose up -d --build``
 
-This command will build Dockerfile each project and will up the containers of each image of the project on Docker.
+This command will build image from Dockerfile of the each project and will server up the containers of each image of the project on Docker.
